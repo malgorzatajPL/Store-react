@@ -34,7 +34,9 @@ const Header = () => {
   return (
     <HeaderPrimary>
       <Logo>Example shop</Logo>
-      <Nav></Nav>
+      <Nav>
+        
+      </Nav>
       <CustomerDetails>
         <ShoppingBasketOutlinedIcon sx={{ fontSize: "40px", padding: "5px" }} />
         <LoginIcon sx={{ fontSize: "40px", padding: "5px" }} />
