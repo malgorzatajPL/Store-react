@@ -1,7 +1,10 @@
-import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
-import LoginIcon from "@mui/icons-material/Login";
 import React from "react";
 import styled from "styled-components";
+
+import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
+import LoginIcon from "@mui/icons-material/Login";
+import MenuIcon from "@mui/icons-material/Menu";
+import Badge from "@mui/material/Badge";
 
 const HeaderPrimary = styled.div`
   justify-content: space-between;
@@ -16,12 +19,13 @@ const Nav = styled.div`
   list-style-type: none;
   text-decoration: none;
   display: inline-block;
-  color: #626262;
 `;
 
 const Logo = styled.div`
   font-family: "Pacifico", cursive;
   font-size: 28px;
+  padding: 10px;
+  text-align: center;
   flex: 1;
 `;
 const CustomerDetails = styled.div`
@@ -33,13 +37,17 @@ const CustomerDetails = styled.div`
 const Header = () => {
   return (
     <HeaderPrimary>
-      <Logo>Example shop</Logo>
       <Nav>
-        
+        <MenuIcon sx={{ fontSize: "50px", padding: "5px" }}></MenuIcon>
       </Nav>
+      <Logo>Example shop</Logo>
       <CustomerDetails>
-        <ShoppingBasketOutlinedIcon sx={{ fontSize: "40px", padding: "5px" }} />
-        <LoginIcon sx={{ fontSize: "40px", padding: "5px" }} />
+        <Badge badgeContent={1} color='primary'>
+          <ShoppingBasketOutlinedIcon
+            sx={{ fontSize: "40px", padding: "5px 0"}}
+          />
+        </Badge>
+        <LoginIcon sx={{ fontSize: "40px", padding: "5px 20px" }} />
       </CustomerDetails>
     </HeaderPrimary>
   );
