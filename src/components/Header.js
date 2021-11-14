@@ -26,6 +26,7 @@ const Logo = styled.div`
   font-size: 28px;
   padding: 10px;
   text-align: center;
+  color: #FE4A49;
   flex: 1;
 `;
 const CustomerDetails = styled.div`
@@ -42,7 +43,7 @@ const Header = () => {
       </Nav>
       <Logo>Example shop</Logo>
       <CustomerDetails>
-        <Badge badgeContent={1} color='primary'>
+        <Badge badgeContent={1} color='secondary'>
           <ShoppingBasketOutlinedIcon
             sx={{ fontSize: "40px", padding: "5px 0"}}
           />
