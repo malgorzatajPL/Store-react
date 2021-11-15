@@ -53,5 +53,4 @@ const Header = () => {
     </HeaderPrimary>
   );
 };
-
 export default Header;

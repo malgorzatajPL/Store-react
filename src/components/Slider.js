@@ -1,12 +1,13 @@
 import React from "react";
+import axios from "axios";
 import styled from "styled-components";
+
 import { ArrowBackIosNew, ArrowForwardIos } from "@mui/icons-material";
 import SvgButton from "./Button";
 
 const Container = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: pink;
   position: relative;
 `;
 
@@ -29,21 +30,20 @@ const Arrow = styled.div`
 `;
 
 const Wrapper = styled.div`
-  height: 100%;
+  height: 100vh;
 `;
 const Slide = styled.div`
   display: flex;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 `;
 
-const Image = styled.image`
-  height: 80%;
-`;
 const ImgSlide = styled.div`
   flex: 1;
-  height: 100%;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
 `;
 
 const InfoSlide = styled.div`
@@ -65,7 +65,17 @@ const DescriptionSlide = styled.p`
   font-size: 24px;
 `;
 
+const baseURL = "https://fakestoreapi.com/products";
 const Slider = () => {
+  const [image, setImage] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(`${baseURL}/1`).then((response) => {
+      setImage(response.data.image);
+    });
+  }, []);
+  if (!image) return null;
+  console.log(image);
   return (
     <div>
       <Container>
@@ -75,7 +85,7 @@ const Slider = () => {
         <Wrapper>
           <Slide>
             <ImgSlide>
-              <Image />
+              <img src={image} alt='slider img' style={{ width: "250px" }} />
             </ImgSlide>
             <InfoSlide>
               <TitleSlide>SALE</TitleSlide>
