@@ -9,6 +9,7 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   position: relative;
+  overflow: hidden;
 `;
 
 const Arrow = styled.div`
@@ -31,12 +32,20 @@ const Arrow = styled.div`
 
 const Wrapper = styled.div`
   height: 100vh;
+  display: flex;
+  transform: translateX(${(props) => props.slideIndex * -100}vw);
+  transition: all .7s ease;
 `;
 const Slide = styled.div`
   display: flex;
   align-items: center;
   width: 100vw;
-  height: 100%;
+  height: 90vh;
+  position:relative;
+  .data {
+    width: 100vw;
+    display: flex;
+  }
 `;
 
 const ImgSlide = styled.div`
@@ -48,7 +57,7 @@ const ImgSlide = styled.div`
 
 const InfoSlide = styled.div`
   flex: 1;
-  padding: 50px;
+  padding: 50px 90px 20px 0;
   height: 80%;
   display: flex;
     flex-direction: column;
@@ -65,67 +74,16 @@ const DescriptionSlide = styled.p`
   font-size: 24px;
 `;
 
-// const getAllData = () => {
-//   const [data, setData] = useState();
-//   axios
-//     .get("https://fakestoreapi.com/products")
-//     .then((response) => {
-//       console.log(response.data);
-//       setData(response.data);
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };
-
-// const Slider = () => {
-//   useEffect(() => {
-//     getAllData();
-//    }, []);
-//   if (!image) return null;
-//   return (
-//     <div>
-{
-  /* <Container>
-        <Arrow direction="left">
-          <ArrowBackIosNew />
-        </Arrow>
-        <Wrapper>
-          <Slide>
-            <ImgSlide>
-              <img src={image} alt="slider img" style={{ width: "250px" }} />
-            </ImgSlide>
-            <InfoSlide>
-              <h2 className="title">{title}</h2>
-              <p className="description">{description}</p>
-              <SvgButton />
-            </InfoSlide>
-          </Slide>
-        </Wrapper>
-        <Arrow direction="right">
-          <ArrowForwardIos />
-        </Arrow>
-      </Container> */
-}
-{
-  /* 
-      {data ? ( data.map((data) => {
-return (
-<div className="data" key={data.id}>
-<h3>{data.name}</h3>
-</div>
-); })) : (
-<h3>No data yet</h3>
-)}
-    </div>
-  );
-};
-
-export default Slider; */
-}
-
 function Slider() {
   const [data, setData] = useState("");
+  const [slideIndex, setSlideIndex] = useState(0);
+  const handleClick = (direction) => {
+    if(direction==="left"){
+      setSlideIndex(slideIndex-1)
+    } else{
+      setSlideIndex(slideIndex+1)
+    }
+  };
   const getAllData = () => {
     axios
       .get("https://fakestoreapi.com/products")
@@ -141,41 +99,45 @@ function Slider() {
     getAllData();
   }, []);
   return (
-    <>
-              <Arrow direction="left">
-        <ArrowBackIosNew />
-      </Arrow>
-              <Arrow direction="right">
-                <ArrowForwardIos />
-              </Arrow>
-      
-      {data ? (
-        data.map((data) => {
-          return (
-            <>
-              <Slide>
-                <div className="data" key={data.id}>
-                  <ImgSlide>
-                    <img
-                      src={data.image}
-                      alt="slider img"
-                      style={{ width: "250px" }}
-                    />
-                  </ImgSlide>
-                  <InfoSlide>
-                    <h3>{data.title}</h3>
-                    <h3>{data.description}</h3>
-                  </InfoSlide>
-                </div>
-                <SvgButton />
-              </Slide>
-            </>
-          );
-        })
-      ) : (
-        <h3>No data yet</h3>
-      )}
-    </>
+    <Container>
+      <Wrapper slideIndex={slideIndex}>
+        {data ? (
+          data.map((data) => {
+            return (
+              <>
+                <Slide>
+                  <div className="data" key={data.id}>
+                    <Arrow direction="left" onClick={() => handleClick("left")}>
+                      <ArrowBackIosNew />
+                    </Arrow>
+                    <ImgSlide>
+                      <img
+                        src={data.image}
+                        alt="slider img"
+                        style={{ width: "250px" }}
+                      />
+                    </ImgSlide>
+                    <InfoSlide>
+                      <h3>{data.title}</h3>
+                      <h3>{data.description}</h3>
+                      <SvgButton />
+                    </InfoSlide>
+                    <Arrow
+                      direction="right"
+                      onClick={() => handleClick("right")}
+                    >
+                      <ArrowForwardIos />
+                    </Arrow>
+                  </div>
+                </Slide>
+              </>
+            );
+          })
+        ) : (
+          <h3>No data yet</h3>
+        )}
+      </Wrapper>
+    </Container>
   );
 }
 export default Slider;
