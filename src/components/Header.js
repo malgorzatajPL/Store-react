@@ -5,20 +5,26 @@ import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlin
 import LoginIcon from "@mui/icons-material/Login";
 import MenuIcon from "@mui/icons-material/Menu";
 import Badge from "@mui/material/Badge";
+import { Category } from "./Category";
 
 const HeaderPrimary = styled.div`
   justify-content: space-between;
   position: relative;
   padding: 20px;
   display: flex;
+  align-items: center;
+  .css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
+    font-family: "Inconsolata", monospace;
+  }
 `;
 
 const Nav = styled.div`
   flex: 1;
-  font-family: "Inconsolata", monospace;
   list-style-type: none;
   text-decoration: none;
   display: inline-block;
+  padding-left:20px;
+  coursor:pointer;
 `;
 
 const Logo = styled.div`
@@ -26,8 +32,8 @@ const Logo = styled.div`
   font-size: 28px;
   padding: 10px;
   text-align: center;
-  color: #FE4A49;
-  flex: 1;
+  color: #fe4a49;
+  flex: 6;
 `;
 const CustomerDetails = styled.div`
   flex: 1;
@@ -41,11 +47,12 @@ const Header = () => {
       <Nav>
         <MenuIcon sx={{ fontSize: "50px", padding: "5px" }}></MenuIcon>
       </Nav>
+      <Category />
       <Logo>Example shop</Logo>
       <CustomerDetails>
-        <Badge badgeContent={1} color='secondary'>
+        <Badge badgeContent={1} color="secondary">
           <ShoppingBasketOutlinedIcon
-            sx={{ fontSize: "40px", padding: "5px 0"}}
+            sx={{ fontSize: "40px", padding: "5px 0" }}
           />
         </Badge>
         <LoginIcon sx={{ fontSize: "40px", padding: "5px 20px" }} />

@@ -25,7 +25,7 @@ const Arrow = styled.div`
   justify-content: center;
   align-items: center;
   left: ${(props) => props.direction === "left" && "10px"};
-  right: ${(props) => props.direction === "right" && "10px"};
+  right: ${(props) => props.direction === "right" && "20px"};
   cursor: pointer;
   opacity: 0.8;
 `;

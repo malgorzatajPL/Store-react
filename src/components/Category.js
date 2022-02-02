@@ -25,7 +25,7 @@ export function Category() {
         id="combo-box-demo"
         options={data}
         sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Movie" />}
+        renderInput={(params) => <TextField {...params} label="Category" />}
       />
     </>
   );
