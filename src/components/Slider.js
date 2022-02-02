@@ -34,14 +34,14 @@ const Wrapper = styled.div`
   height: 100vh;
   display: flex;
   transform: translateX(${(props) => props.slideIndex * -100}vw);
-  transition: all .7s ease;
+  transition: all 0.7s ease;
 `;
 const Slide = styled.div`
   display: flex;
   align-items: center;
   width: 100vw;
   height: 90vh;
-  position:relative;
+  position: relative;
   .data {
     width: 100vw;
     display: flex;
@@ -65,23 +65,23 @@ const InfoSlide = styled.div`
 }
 `;
 const TitleSlide = styled.h1`
-  font-size: 70px;
+  font-size: 60px;
   margin: 20px 0;
 `;
 const DescriptionSlide = styled.p`
-  margin: 20px 0;
+  margin: 20px 0 40px 0;
   text-transform: uppercase;
-  font-size: 24px;
+  font-size: 22px;
 `;
 
 function Slider() {
   const [data, setData] = useState("");
   const [slideIndex, setSlideIndex] = useState(0);
   const handleClick = (direction) => {
-    if(direction==="left"){
-      setSlideIndex(slideIndex-1)
-    } else{
-      setSlideIndex(slideIndex+1)
+    if (direction === "left") {
+      setSlideIndex(slideIndex - 1);
+    } else {
+      setSlideIndex(slideIndex + 1);
     }
   };
   const getAllData = () => {
@@ -114,12 +114,12 @@ function Slider() {
                       <img
                         src={data.image}
                         alt="slider img"
-                        style={{ width: "250px" }}
+                        style={{ width: "320px" }}
                       />
                     </ImgSlide>
                     <InfoSlide>
-                      <h3>{data.title}</h3>
-                      <h3>{data.description}</h3>
+                      <TitleSlide>{data.title}</TitleSlide>
+                      <DescriptionSlide>{data.description}</DescriptionSlide>
                       <SvgButton />
                     </InfoSlide>
                     <Arrow
