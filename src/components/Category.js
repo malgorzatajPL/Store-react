@@ -3,13 +3,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 export function Category() {
-  const [data, setData] = useState("");
+   const [category, setCategory] = useState("");
   const getCategory = () => {
     axios
       .get("https://fakestoreapi.com/products/categories")
       .then((response) => {
         console.log(response.data);
-        setData(response.data);
+        setCategory(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -23,7 +23,7 @@ export function Category() {
       <Autocomplete
         disablePortal
         id="combo-box-demo"
-        options={data}
+        options={category}
         sx={{ width: 300 }}
         renderInput={(params) => <TextField {...params} label="Category" />}
       />
