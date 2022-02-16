@@ -1,182 +1,250 @@
-import { Autocomplete, TextField } from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import Carousel from "react-elastic-carousel";
 import styled from "styled-components";
 
 const CategoryItem = styled.div`
- display:flex;
- flex-wrap:wrap;
-.singleItem{
-    width:250px;
-    height:250px;
-    padding:20px;
-    img{
-        width:100px!important;
+  display: flex;
+  flex-wrap: wrap;
+  .singleItem {
+    width: 320px;
+    height: 320px;
+    padding: 20px;
+    position: relative;
+    img {
+      height: -webkit-fill-available;
+      position: absolute;
     }
-}
-  
+    h3 {
+      position: absolute;
+      background-color: white;
+      box-shadow: 3px 3px 3px #999;
+      padding: 10px;
+      left: 85px;
+    top: 100px;
+    right: 85px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    }
+  }
 `;
 
 export function CategoryJawelery() {
-    const [jawelery, setJawelery] = useState("");
-    console.log(jawelery);
-    const getJawelery = () => {
-        axios
-        .get("https://fakestoreapi.com/products/category/jewelery")
-        .then((response) => {
-            console.log(response.data);
-            setJawelery(response.data);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-    }; 
-    
-    useEffect(() => {
-        getJawelery(); 
-    }, []);
-    return (
-        <CategoryItem key={jawelery.id}>
+  const carousel_ref = useRef(null);
+  const autoplay_speed = 3000;
+  const [jawelery, setJawelery] = useState("");
+  const getJawelery = () => {
+    axios
+    .get("https://fakestoreapi.com/products/category/jewelery")
+    .then((response) => {
+      // console.log(response.data);
+      setJawelery(response.data);
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
+
+  useEffect(() => {
+    getJawelery();
+  }, []);
+  return (
+    <Carousel
+          ref={carousel_ref}
+          itemsToShow={1}
+          enableAutoPlay
+          autoPlaySpeed={autoplay_speed}
+          showArrows={false}
+          onNextEnd={({ index }) => {
+            if (index + 1 === jawelery.length) {
+              setTimeout(() => {
+                carousel_ref.current.goTo(0);
+              }, autoplay_speed);
+            }
+          }}
+        > 
       {jawelery ? (
         jawelery.map((data) => {
           return (
-            <div className="singleItem">
+            <div className="singleItem" key={jawelery.id}>
               <img
                 src={data.image}
                 alt="slider img"
                 style={{ width: "320px" }}
               />
-              <h1>
-                  {data.title}
-              </h1>
+              <h3>{data.category}</h3>
             </div>
           );
         })
       ) : (
         <h3>No data yet</h3>
-      )}
-    </CategoryItem>
-      );
-}
-      export function CategoryElectronics() {
-        const [electronics, setElectronics] = useState("");
+      )} 
+        </Carousel>
+          );
+        }
+  
+export function CategoryElectronics() {
+  const carousel_ref = useRef(null);
+  const autoplay_speed = 3000;
+  const [electronics, setElectronics] = useState("");
 
-        const getElectronics = () => {
-            axios
-            .get("https://fakestoreapi.com/products/category/electronics")
-            .then((response) => {
-                console.log(response.data);
-                setElectronics(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        };
-        
-        useEffect(() => { 
-            getElectronics();
-        }, []);
-      return (
-          <CategoryItem key={electronics.id}>
+  const getElectronics = () => {
+    axios
+      .get("https://fakestoreapi.com/products/category/electronics")
+      .then((response) => {
+        // console.log(response.data);
+        setElectronics(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getElectronics();
+  }, []);
+  return (
+    <Carousel
+          ref={carousel_ref}
+          itemsToShow={1}
+          enableAutoPlay
+          autoPlaySpeed={autoplay_speed}
+          showArrows={false}
+          onNextEnd={({ index }) => {
+            if (index + 1 === electronics.length) {
+              setTimeout(() => {
+                carousel_ref.current.goTo(0);
+              }, autoplay_speed);
+            }
+          }}
+        > 
       {electronics ? (
         electronics.map((data) => {
           return (
-            <div className="singleItem">
+            <div className="singleItem" key={electronics.id}>
               <img
                 src={data.image}
                 alt="slider img"
                 style={{ width: "320px" }}
               />
-              <h1>
-                  {data.title}
-              </h1>
+              <h3>{data.category}</h3>
             </div>
           );
         })
       ) : (
         <h3>No data yet</h3>
-      )}
-    </CategoryItem>
-  );
-}
-      export function CategoryMensClothing() {
-        const [MClothing, setMClothing] = useState("");
+      )} 
+        </Carousel>
+          );
+        }
+  
+export function CategoryMensClothing() {
+  const carousel_ref = useRef(null);
+  const autoplay_speed = 3000;
+  const [MClothing, setMClothing] = useState("");
+console.log(MClothing)
+  const getMClothing = () => {
+    axios
+      .get("https://fakestoreapi.com/products/category/men's clothing")
+      .then((response) => {
+        // console.log(response.data);
+        setMClothing(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-        const getMClothing = () => {
-            axios
-            .get("https://fakestoreapi.com/products/category/men's clothing")
-            .then((response) => {
-                console.log(response.data);
-                setMClothing(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        };
-        
-        useEffect(() => { 
-            getMClothing();
-        }, []);
-      return (
-          <CategoryItem key={MClothing.id}>
+  useEffect(() => {
+    getMClothing();
+  }, []);
+  return (
+    <Carousel
+          ref={carousel_ref}
+          itemsToShow={1}
+          enableAutoPlay
+          autoPlaySpeed={autoplay_speed}
+          showArrows={false}
+          onNextEnd={({ index }) => {
+            if (index + 1 === MClothing.length) {
+              setTimeout(() => {
+                carousel_ref.current.goTo(0);
+              }, autoplay_speed);
+            }
+          }}
+        > 
       {MClothing ? (
         MClothing.map((data) => {
           return (
-            <div className="singleItem">
+            <div className="singleItem" key={MClothing.id}>
               <img
                 src={data.image}
                 alt="slider img"
                 style={{ width: "320px" }}
               />
-              <h1>
-                  {data.title}
-              </h1>
+              <h3>{data.category}</h3>
             </div>
           );
         })
       ) : (
         <h3>No data yet</h3>
-      )}
-    </CategoryItem>
-  );
-}
-      export function CategoryWomensClothing() {
-        const [WClothing, setWClothing] = useState("");
+      )} 
+        </Carousel>
+          );
+        }
+  
+export function CategoryWomensClothing() {
+  const carousel_ref = useRef(null);
+  const autoplay_speed = 3000;
+  const [WClothing, setWClothing] = useState("");
 
-        const getWClothing = () => {
-            axios
-            .get("https://fakestoreapi.com/products/category/women's clothing")
-            .then((response) => {
-                console.log(response.data);
-                setWClothing(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        };
-        useEffect(() => { 
-            getWClothing();
-        }, []);
-      return (
-          <div className="Electronics" key={WClothing.id}>
+  const getWClothing = () => {
+    axios
+      .get("https://fakestoreapi.com/products/category/women's clothing")
+      .then((response) => {
+        // console.log(response.data);
+        setWClothing(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    getWClothing();
+  }, []);
+  return (
+    <Carousel
+          ref={carousel_ref}
+          itemsToShow={1}
+          enableAutoPlay
+          autoPlaySpeed={autoplay_speed}
+          showArrows={false}
+          onNextEnd={({ index }) => {
+            if (index + 1 === WClothing.length) {
+              setTimeout(() => {
+                carousel_ref.current.goTo(0);
+              }, autoplay_speed);
+            }
+          }}
+        > 
       {WClothing ? (
         WClothing.map((data) => {
           return (
-            <div className="singleItem">
+            <div className="singleItem" key={WClothing.id}>
               <img
                 src={data.image}
                 alt="slider img"
                 style={{ width: "320px" }}
               />
-              <h1>
-                  {data.title}
-              </h1>
+              <h3>{data.category}</h3>
             </div>
           );
         })
       ) : (
         <h3>No data yet</h3>
-      )}
-    </div>
-  );
-}
+      )} 
+        </Carousel>
+          );
+        }
+  
