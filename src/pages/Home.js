@@ -1,19 +1,14 @@
- 
 import React from "react";
-import { CategoryElectronics, CategoryJawelery, CategoryMensClothing, CategoryWomensClothing } from "../components/CategoryComponent";
+import CategorySlider from "../components/CategorySlider";
 import Header from "../components/Header";
 import Slider from "../components/Slider";
 
 const Home = () => {
- 
   return (
     <div>
       <Header />
-      <Slider /> 
-      <CategoryJawelery/>
-      <CategoryElectronics />
-      <CategoryMensClothing/> 
-      <CategoryWomensClothing/>
+      <Slider />
+      <CategorySlider />
     </div>
   );
 };
