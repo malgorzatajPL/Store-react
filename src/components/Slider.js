@@ -7,7 +7,7 @@ import SvgButton from "./Button";
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 85vh;
   position: relative;
   overflow: hidden;
 `;
@@ -40,7 +40,7 @@ const Slide = styled.div`
   display: flex;
   align-items: center;
   width: 100vw;
-  height: 90vh;
+  height: 80vh;
   position: relative;
   .data {
     width: 100vw;

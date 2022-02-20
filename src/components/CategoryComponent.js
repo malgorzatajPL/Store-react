@@ -29,13 +29,17 @@ const CategoryItem = styled.div`
       position: absolute;
       background-color: white;
       box-shadow: 3px 3px 3px #999;
-      font-size: 26px;
+      font-size: 40px;
       padding: 20px;
       left: 85px;
       text-align: center;
+      color: #000;
       top: 100px;
-      right: 235px;
-      text-transform: capitalize;
+      right: 170px;
+      text-transform: uppercase;
+      -webkit-letter-spacing: 1px;
+      -moz-letter-spacing: 1px;
+      -ms-letter-spacing: 1px;
       letter-spacing: 1px;
     }
   }
@@ -66,7 +70,7 @@ export function CategoryJawelery() {
       <Carousel
         ref={carousel_ref}
         itemsToShow={1}
-        enableAutoPlay
+        // enableAutoPlay
         autoPlaySpeed={autoplay_speed}
         showArrows={false}
         pagination={false}
