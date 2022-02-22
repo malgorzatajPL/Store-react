@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const PopularProductsStyle = styled.div`
-
+h2{
+    
+}
 `;
 
 export const PopularProducts = () => {

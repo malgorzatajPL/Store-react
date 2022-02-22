@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { device } from "../media queries/mediaQueries";
 import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
 import LoginIcon from "@mui/icons-material/Login";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -13,6 +13,19 @@ const HeaderPrimary = styled.div`
   padding: 20px;
   display: flex;
   align-items: center;
+  @media ${device.mobileS} {
+    flex-direction: column;
+    position: sticky;
+    z-index: 10;
+    position: fixed;
+    background-color: #fbfbfb;
+    box-shadow: 7px 5px 5px rgb(0 0 0 / 10%);
+    width: -webkit-fill-available;
+  }
+  @media ${device.tablet} {
+    flex-direction: row;
+    align-items: center;
+  }
   .css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
     font-family: "Inconsolata", monospace;
   }
@@ -23,8 +36,15 @@ const Nav = styled.div`
   list-style-type: none;
   text-decoration: none;
   display: inline-block;
-  padding-left:20px;
-  coursor:pointer;
+  padding-left: 20px;
+  coursor: pointer;
+  @media ${device.mobileS} {
+    display: flex;
+    padding: 0;
+  }
+  @media ${device.tablet} {
+    display: contents;
+  }
 `;
 
 const Logo = styled.div`
@@ -39,6 +59,13 @@ const CustomerDetails = styled.div`
   flex: 1;
   display: flex;
   justify-content: flex-end;
+  @media ${device.mobileS} {
+    padding-top: 30px;
+  }
+  @media ${device.tablet} {
+    padding-top: 0;
+    padding-left:20px;
+  }
 `;
 
 const Header = () => {
@@ -46,9 +73,9 @@ const Header = () => {
     <HeaderPrimary>
       <Nav>
         <MenuIcon sx={{ fontSize: "50px", padding: "5px" }}></MenuIcon>
+        <Logo>Example shop</Logo>
       </Nav>
       <Category />
-      <Logo>Example shop</Logo>
       <CustomerDetails>
         <Badge badgeContent={1} color="secondary">
           <ShoppingBasketOutlinedIcon

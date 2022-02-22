@@ -4,12 +4,20 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { ArrowBackIosNew, ArrowForwardIos } from "@mui/icons-material";
 import SvgButton from "./Button";
+import { device } from "../media queries/mediaQueries";
 
 const Container = styled.div`
   width: 100%;
   height: 85vh;
   position: relative;
   overflow: hidden;
+  @media ${device.mobileS} {
+    display: none;
+  }
+  @media ${device.tablet} {
+    display: block;
+    padding-top: 100px;
+  }
 `;
 
 const Arrow = styled.div`
@@ -45,6 +53,9 @@ const Slide = styled.div`
   .data {
     width: 100vw;
     display: flex;
+    @media ${device.tablet} {
+      align-items: center;
+    }
   }
 `;
 
@@ -53,6 +64,9 @@ const ImgSlide = styled.div`
   padding: 30px;
   display: flex;
   justify-content: center;
+  @media ${device.tablet} {
+    height: 50%;
+  }
 `;
 
 const InfoSlide = styled.div`
@@ -67,11 +81,18 @@ const InfoSlide = styled.div`
 const TitleSlide = styled.h1`
   font-size: 60px;
   margin: 20px 0;
+}
+@media ${device.tablet} { 
+   font-size:32px;
+  }
 `;
 const DescriptionSlide = styled.p`
   margin: 20px 0 40px 0;
   text-transform: uppercase;
   font-size: 22px;
+  @media ${device.tablet} {
+    font-size: 18px;
+  }
 `;
 
 function Slider() {

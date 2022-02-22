@@ -11,8 +11,8 @@ const Home = () => {
       <Header />
       <Slider />
       <Banner/>
-      <CategorySlider />
-      <PopularProducts/> 
+      {/* <CategorySlider />
+      <PopularProducts/>  */}
     </div>
   );
 };
