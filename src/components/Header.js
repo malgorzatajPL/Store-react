@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { device } from "../media queries/mediaQueries";
 import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
 import LoginIcon from "@mui/icons-material/Login";
-import MenuIcon from "@mui/icons-material/Menu";
+
 import Badge from "@mui/material/Badge";
 import { Category } from "./Category";
+import Menu from "./Menu";
 
 const HeaderPrimary = styled.div`
   justify-content: space-between;
@@ -64,7 +65,7 @@ const CustomerDetails = styled.div`
   }
   @media ${device.tablet} {
     padding-top: 0;
-    padding-left:20px;
+    padding-left: 20px;
   }
 `;
 
@@ -72,12 +73,12 @@ const Header = () => {
   return (
     <HeaderPrimary>
       <Nav>
-        <MenuIcon sx={{ fontSize: "50px", padding: "5px" }}></MenuIcon>
+        <Menu style={{ transform: "translateY(1000%)" }} />
         <Logo>Example shop</Logo>
       </Nav>
       <Category />
       <CustomerDetails>
-        <Badge badgeContent={1} color="secondary">
+        <Badge badgeContent={1} color='secondary'>
           <ShoppingBasketOutlinedIcon
             sx={{ fontSize: "40px", padding: "5px 0" }}
           />
