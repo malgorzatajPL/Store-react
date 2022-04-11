@@ -1,4 +1,4 @@
-import React from "react";
+import React, { setState } from "react";
 import styled from "styled-components";
 import { device } from "../media queries/mediaQueries";
 import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
@@ -69,11 +69,21 @@ const CustomerDetails = styled.div`
   }
 `;
 
-const Header = () => {
+ 
+  class Header extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { fade: true }
+  }
+  render() {
+    const fade = this.state.fade
+    console.log(fade);
+
   return (
     <HeaderPrimary>
       <Nav>
-        <Menu style={{ transform: "translateY(1000%)" }} />
+        <Menu  onAnimationEnd={() => setState({ fade: false })}
+        className={fade ? 'fade' : ''} />
         <Logo>Example shop</Logo>
       </Nav>
       <Category />
@@ -87,5 +97,6 @@ const Header = () => {
       </CustomerDetails>
     </HeaderPrimary>
   );
+  };
 };
 export default Header;

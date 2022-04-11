@@ -10,22 +10,41 @@ const MenuStyle = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
-  ul {
-    display: flex;
-    flex-direction: column;
+  #results {
+    position: absolute;
+    transform: translateX(-1000%);
+    -webkit-transform: translateX(-1000%);
+    ul {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .fade {
+    animation: slide-in 0.5s forwards;
+    -webkit-animation: slide-in 0.5s forwards;
+  }
+  @keyframes slide-in {
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  @-webkit-keyframes slide-in {
+    100% {
+      -webkit-transform: translateX(0%);
+    }
   }
 `;
 
 const Menu = () => {
   const [showMore, setShowMore] = useState(false);
-  const MoreAddons = () => (
+  const [fade, setFade] = useState(false);
+  console.log(fade);
+  const MoreMenu = () => (
     <MenuStyle>
       <div
         id='results'
-        className='search-results'
-        style={{
-          transition: "transform 1s ease-in-out",  transform: 'translateY(-10%)'
-        }}>
+        className={fade ? "fade search-results" : "search-results"}>
         <div>
           <ul>
             <Text40>
@@ -53,18 +72,13 @@ const Menu = () => {
       </div>
     </MenuStyle>
   );
-
-  function handleClick() {
-    setShowMore({ showMore: !showMore });
-  }
-
   return (
     <>
-      {showMore ? <MoreAddons /> : null}
+      {showMore ? <MoreMenu /> : null}
       <MenuIcon
         sx={{ fontSize: "50px", padding: "5px" }}
         style={{ lineHeight: "4", position: "absolute", top: "15px" }}
-        onClick={() => setShowMore(!showMore)}
+        onClick={() => setShowMore(!showMore) || setFade(!fade)}
       />
     </>
   );
