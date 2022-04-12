@@ -1,29 +1,29 @@
 import React from "react";
-import styled from "styled-components"
-import {device} from "../media queries/mediaQueries"
+import styled from "styled-components";
+import { device } from "../media queries/mediaQueries";
 const BannerStyle = styled.section`
   padding: 0 40px 20px 40px;
   text-align: center;
-  @media ${device.mobileS} { 
-padding-top:300px;
+  @media ${device.mobileS} {
+    padding-top: 300px;
   }
-  @media ${device.tablet} { 
-   padding-top:150px; 
+  @media ${device.tablet} {
+    padding: 110px 0 40px 0;
   }
   h3 {
     font-family: "Allura", cursive;
     font-size: 70px;
     margin-top: 0;
     @media ${device.mobile} {
-      font-size:40px;
+      font-size: 40px;
     }
   }
   p {
     padding: 0 60px 60px 60px;
     line-height: 2;
-    @media ${device.mobileS} { 
-    padding:0;
-  }
+    @media ${device.mobileS} {
+      padding: 0;
+    }
   }
 `;
 

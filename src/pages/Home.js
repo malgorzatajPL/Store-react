@@ -4,6 +4,7 @@ import CategorySlider from "../components/CategorySlider";
 import Header from "../components/Header";
 import Menu from "../components/Menu";
 import { PopularProducts } from "../components/PopularProducts";
+import { Sale } from "../components/Sale";
 import Slider from "../components/Slider";
 
 const Home = () => {
@@ -11,8 +12,8 @@ const Home = () => {
     <div>
       <Header />
       <Slider />
-      <Banner/>
-     
+      <Banner />
+      <Sale />
       {/* <CategorySlider />
       <PopularProducts/>  */}
     </div>
