@@ -3,6 +3,7 @@ import { Banner } from "../components/Banner";
 import CategorySlider from "../components/CategorySlider";
 import Header from "../components/Header";
 import Menu from "../components/Menu";
+import { Newsletter } from "../components/Newsletter";
 import { PopularProducts } from "../components/PopularProducts";
 import { Sale } from "../components/Sale";
 import Slider from "../components/Slider";
@@ -14,8 +15,9 @@ const Home = () => {
       <Slider />
       <Banner />
       <Sale />
-      {/* <CategorySlider />
-      <PopularProducts/>  */}
+      <CategorySlider />
+      <Newsletter />
+      <PopularProducts />
     </div>
   );
 };
